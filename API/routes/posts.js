@@ -18,7 +18,7 @@ router.post("/insert", (req,res)=>{
   console.log("Insert new post!");
   
   const post = new Post({
-    title: req.body.title,
+    pseudo: req.body.pseudo,
     description: req.body.description
   });
 

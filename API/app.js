@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const postsRoute = require("./routes/posts");
-const userRoute = require("./routes/user");
 
 require("dotenv/config");
 
@@ -32,7 +31,6 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
-app.use("/user", userRoute);
 
 
 // ROUTES
@@ -43,7 +41,7 @@ app.get("/", (req,res) => {
 
 
 // Connect to db 
-mongoose.connect("mongodb://localhost/myLib",
+mongoose.connect("mongodb://localhost/portfoliov2",
  {useNewUrlParser: true,
   useUnifiedTopology: true }
   );
@@ -51,7 +49,7 @@ mongoose.connect("mongodb://localhost/myLib",
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("Connected to myLib");
+  console.log("Connected to portfoliov2");
   
 });
 

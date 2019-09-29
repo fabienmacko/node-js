@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const PostSchema = mongoose.Schema({
-  title: {
+  pseudo: {
     type: String,
     required: true,
   },
