@@ -1,28 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 
 router.get("/", (req,res)=>{
-  Post.find((err, response) => {
+  Comment.find((err, response) => {
     if (!err) {
       res.json(response)
     }
     
   });
-  
-  
-  // res.send(allPOsts);
+
 })
 
 router.post("/insert", (req,res)=>{
-  console.log("Insert new post!");
+  console.log("New comment inserted!");
   
-  const post = new Post({
+  const comment = new Comment({
     pseudo: req.body.pseudo,
     description: req.body.description
   });
 
-  post.save()
+  comment.save()
   .then(data => {
     res.status(201);
     res.json(data);

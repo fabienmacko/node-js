@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const postsRoute = require("./routes/posts");
+const commentsRoute = require("./routes/comments");
 
 require("dotenv/config");
 
@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use("/posts", postsRoute);
+app.use("/comments", commentsRoute);
 
 
 // ROUTES
@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 })
 
 // Connect to db 
-mongoose.connect("mongodb://localhost/portfoliov2",
+mongoose.connect("mongodb+srv://fabienmacko:admin@cluster0-sodm4.mongodb.net/portfoliov2?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -48,10 +48,11 @@ mongoose.connect("mongodb://localhost/portfoliov2",
 );
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log("Connected to portfoliov2");
+})
+db.on('error', err => {
+  throw 'failed connect to MongoDB';
 });
-
 // How to listen on the server
 app.listen(3001);

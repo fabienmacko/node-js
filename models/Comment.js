@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PostSchema = mongoose.Schema({
+const CommentSchema = mongoose.Schema({
   pseudo: {
     type: String,
     required: true,
@@ -15,4 +15,4 @@ const PostSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Posts", PostSchema);
+module.exports = mongoose.model("Comments", CommentSchema);
